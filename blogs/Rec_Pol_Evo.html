@@ -67,16 +67,68 @@ since we are in an ongoing 3 billion year old training run in some sense (maybe)
 essentially: 
           </p>
           <div style="overflow-x:auto;">
-    <p>
-        $$\mathfrak{S}(\theta)=E\left[\sum_{\tau\in G_{o}}\frac{\pi_{\theta}(\tau|o)}{\pi_{\theta old}(\tau|o)}A(\tau)|_{\tau\sim\pi_{\theta old}(\cdot|o)}\right]$$
-    </p>
+<p>
+  <i>J</i>(&theta;) = E[ &sum;<sub>&tau; &in; G<sub>o</sub></sub> 
+  ( &pi;<sub>&theta;</sub>(&tau;|o) / &pi;<sub>&theta;<sub>old</sub></sub>(&tau;|o) ) 
+  A(&tau;) |<sub>&tau; ~ &pi;<sub>&theta;<sub>old</sub></sub>(&sdot;|o)</sub> ]
+</p>
+            <p>Where:
+            </p>
+            <p>
+  <i>A</i>(&tau;) = ( mean[r(&tau;) | &tau; &in; G<sub>o</sub>] - r(&tau;) ) / 
+  std[r(&tau;) | &tau; &in; G<sub>o</sub>]
+</p>
+<p>Consider a species of animals on a relatively small island being big enough to house a large population of the
+animals. This assumption is essentially respectful English for every animal has the opportunity via colocation
+to mate and produce offspring with any other animal in the population . We will further assume that this
+species is genderless and every one can make (real, not adopted) babies with everyone else</p>
+
+            <p>Under these assumptions, the act of mate selection will serve as a proxy for advantage in the evolution of the
+species. Indeed, if 𝑟(𝜏) = #babies made , then a single sample estimate of the objective takes the form:</p>
+
+            <p>
+  <i>J</i>(&theta;) &asymp; ( 1 / |G<sub>o</sub>| ) &sum;<sub>&tau; &in; G<sub>o</sub></sub> 
+  ( &pi;<sub>&theta;</sub>(&tau;|o) / &pi;<sub>&theta;<sub>old</sub></sub>(&tau;|o) ) 
+  [ Z-score, #bbys had by &theta;<sub>old</sub> ]
+</p>
+
+            <p>Now, instead of keeping track of only one 𝜃𝑜𝑙𝑑, during each gradient step, let’s keep track of |𝐺𝑜|- many {𝜃𝑖}
+and stochastically sample the next collection from the gradient we calculate from the estimate:
+            </p>
+            <p>
+  <i>J</i>(&theta;) &asymp; ( 1 / |G<sub>o</sub>| ) &sum;<sub>&tau;<sub>i</sub> &in; G<sub>o</sub></sub> 
+  ( &pi;<sub>&theta;</sub>(&tau;<sub>i</sub>|o) / &pi;<sub>&theta;<sub>i</sub></sub>(&tau;<sub>i</sub>|o) ) 
+  [ Z-score, #bbys had by &theta;<sub>i</sub> ]
+</p>
+            <p>
+Since this is only one species and they are isolated on an island, it makes sense to draw them IID like this.
+Otherwise, we would have to account for subsets of the population evolving independently of the whole, and
+this isn’t what im trying to capture here. Though, perhaps you could view the more complicated example as
+the case where next generation of agents are drawn from an individually weighted version of the objective.
+Perhaps for the agent a with weights 𝜃𝑎, its offspring’s weights would be sampled via SGLD from
+            </p>
+            <p>
+  <i>J</i><sub>a</sub>(&theta;) &asymp; ( 1 / |G<sub>o</sub>| ) &sum;<sub>&tau;<sub>i</sub> &in; G<sub>o</sub></sub> 
+  ( &pi;<sub>&theta;</sub>(&tau;<sub>i</sub>|o) / &pi;<sub>a<sub>i</sub></sub>(&tau;<sub>i</sub>|o) ) 
+  [ Z-score, #bbys had by &theta;<sub>i</sub> ] * <b>1</b><sub>{a<sub>i</sub> | a had baby with a<sub>i</sub>}</sub>(a<sub>i</sub>)
+</p>
+
+            <p>
+              Maybe this would mimic the divergent behavior of species in larger populations seen in the real world
+            </p>
+            <p>Because of our IID assumption, these two quantities are clearly equal in expected value (LLN). Hence, GRPO
+can be thought of a “flat ” version of real evolution – kinda. Its unclear to me if the way DNA combines between
+humans to produce a new – potentially better – offspring would behave linearly like it does here – but the
+principal is g rounded: <b>GRPO is a simple model for evolution among a uniform population of agents.</b> With this
+intuition, can we make it better? Does this hint at what kind of tasks – perhaps yet untried – that GRPO might
+be good at?</p>
 </div>
           
         </section>
 
         <!-- About the Author Section -->
         <section class="about-author">
-            <h3>About James Squires</h3>
+            <h3>About Kyle Jones</h3>
             <p>
                 Math PhD candidate at Purdue; works in AI Theory
             </p>
