@@ -1,6 +1,92 @@
----
-layout: post
-title: "Recurrence in RL and Evolutionary GRPO"
-date: 2026-02-14
-use_math: true
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <meta charset="UTF-8">
+    <title>Understanding Our Topic</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- Reusable navbar -->
+<div id="navbar"></div>
+
+<main>
+    <article class="blog-post">
+        <header>
+            <h2>Recurrence in Reiforcement Learning</h2>
+            <p class="author">By Kyle Jones · February 2026</p>
+        </header>
+
+        <section>
+          <h3>Recurrence in Reinforcement Learning
+          </h3>
+          <p>I will characterize the human nervus as a totally recurrent reinforcement learning algorithm. This is
+not difficult to do since the RL formalism was designed to mimic biological agentics. The human nervus
+system can be seen as a vector of activations, where each component of the vector corresponds to sodium
+concentrations in a given neuron of the human . For clarity, one neuron per component, one component per
+neuron. How do the activations change over time? It depends totally on two things: concentration of sodium in
+other neurons and perhaps outside stimulus (maybe don’t include sensory neuron activations in state vector?
+Simplifies model but maybe unrealistic) . So, you can characterize a human as a totally recurrent RL agent
+with a state vector h encoding both hidden activations and logits. To properly put this into the RL formalism
+you would have to compute the probability of h going from one state to any other, since actions happen
+exactly when a new state is achieved by h.
+          </p>
+
+          <p>People say that we have entered a new age of AI where we “let the brain build itself” and then do the
+exact opposite and sink billions into transformers because they produce good reasoning policies. I think the
+most efficient way to allocate compute in an RL agent will come from a totally recurrent agent that can learn
+the attention mechanism (or something else) through training.</p>
+
+
+          <h3>Policy and Action</h3>
+          <p>
+            I have a goal in life and I intend to attain it, so I take steps towards it. What the hell does that mean?
+Step? Action? What do these words really mean? The “actions ” of the human RL agent are infinitesimal muscle
+movements (or perhaps changes in muscle activation) in the context of our previous discussion. The agent
+that we call ourselves is clearly not operating as the agent of our ideal formalism. Does the proper agent
+have within it a proper conception of itself in this way? (now it do) Is the agent we call us a proper agent? Or
+is the ‘agentness ’ just an illusion – a good way of bookkeeping within the activations of our formal agent?
+Could we tell the difference between these two cases?
+          </p>
+
+          <p>Out of desperation, lets come up with a list of necessary (but perhaps not sufficient) conditions for the
+‘agent of self ’ to be a genuine RL agent : If totally recurrent mass of neurons that is our RL agent is not what
+‘we’ are to ourselves, then, since we can detect parts of our conscious experience via brain imaging, one
+would hope we could classify neurons as apart of “us ” or not. However, even if there was such a distinct
+boundary, the outputs of the neural net that was supposedly us is still just neurons.</p>
+          <p>Really, the output of the human neural network is the full stack: highest level abstractions down to
+fine muscle output and automatic self - regulation. The entire thing as a physical entity that processes
+nutrients, abstracts it’s observations, and acts on those abstractions should be what is considered the formal
+thing. Then, its clear we exist as whatever is acting on those abstractions. Further, this is not unreasonable
+since we are in an ongoing 3 billion year old training run in some sense (maybe)</p>
+
+          <h3>The Training Algorithm</h3>
+          <p><b>Claim:</b>Evolution is GRPO with a really weird advantage calculation. <b>Proof:</b> The GRPO objective is
+essentially: 
+          </p>
+          <div style="overflow-x:auto;">
+    <p>
+        $$\mathfrak{S}(\theta)=E\left[\sum_{\tau\in G_{o}}\frac{\pi_{\theta}(\tau|o)}{\pi_{\theta old}(\tau|o)}A(\tau)|_{\tau\sim\pi_{\theta old}(\cdot|o)}\right]$$
+    </p>
+</div>
+          
+        </section>
+
+        <!-- About the Author Section -->
+        <section class="about-author">
+            <h3>About James Squires</h3>
+            <p>
+                Math PhD candidate at Purdue; works in AI Theory
+            </p>
+        </section>
+    </article>
+</main>
+
+<!-- Reusable footer -->
+<div id="footer"></div>
+
+<script src="/main.js"></script>
+</body>
+</html>
